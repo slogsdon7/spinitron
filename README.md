@@ -1,7 +1,7 @@
 Python wrapper for [Spinitron's](https://spinitron.com) API.
 
 
-###Quick-start
+## Quick-start
 ```python
 from spinitron.client import Spinitron
 
