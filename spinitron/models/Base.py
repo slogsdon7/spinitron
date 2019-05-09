@@ -1,10 +1,4 @@
 from __future__ import annotations
-from dataclasses import dataclass, InitVar
-from typing import *
-
-
-
-T = TypeVar('T', bound='Item')
 
 
 class Base(object):

@@ -1,11 +1,16 @@
+from __future__ import annotations
+
 from dataclasses import dataclass
-from typing import *
+from typing import Optional, TYPE_CHECKING
 from .Base import Base
+
+if TYPE_CHECKING:
+    from .Playlist import Playlist
 
 
 @dataclass(init=False)
 class Spin(Base):
-    id: int
+    id: Optional[int] = None
     playlist_id: Optional[int] = None
     start: Optional[str] = None
     end: Optional[str] = None
@@ -37,10 +42,5 @@ class Spin(Base):
     upc: Optional[str] = None
     iswc: Optional[str] = None
 
-
-    @property
-    def playlist(self):
-        return None
-
-    def __repr__(self):
-        return f'[{self.artist} - {self.song} [{self.id}] [{self.start}]'
+    def playlist(self, **kwargs) -> Playlist:
+        return self.spinitron.playlists(self.playlist_id, **kwargs)

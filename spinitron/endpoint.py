@@ -10,8 +10,9 @@ class Endpoint(object):
         self.path = path
         self.client = client
         self.factory = factory
+        self.factory.endpoint = self
 
-    def __call__(self, id: Optional[T_ID] = None, params:Optional[T_PARAMS] = None):
+    def __call__(self, id: Optional[T_ID] = None, **kwargs: Union[str, int]):
         path = (self.path, str(id)) if id is not None else (self.path,)
-        response = self.client.get(path, params)
+        response = self.client.get(path, **kwargs)
         return self.factory(response)

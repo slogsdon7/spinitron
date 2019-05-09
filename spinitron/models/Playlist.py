@@ -1,17 +1,17 @@
 from __future__ import annotations
-from typing import *
+from typing import Optional, TYPE_CHECKING
 from dataclasses import dataclass
 from .Base import Base
-
 
 if TYPE_CHECKING:
     from .Persona import Persona
     from .Show import Show
+    from .Listing import Listing
 
 
 @dataclass(init=False)
 class Playlist(Base):
-    id: int
+    id: Optional[int] = None
     persona_id: Optional[int] = None
     show_id: Optional[int] = None
     start: Optional[str] = None
@@ -29,16 +29,16 @@ class Playlist(Base):
     episode_name: Optional[str] = None
     episode_description: Optional[str] = None
 
-    def spins(self, params: Optional[Dict] = None):
-        if params is None:
-            params = {'playlist_id': self.id}
-        return self.spinitron.spins.query(params)
+    def spins(self, **kwargs) -> Listing:
+        params = kwargs
+        params['playlist_id'] = self.id
+        return self.spinitron.spins(**params)
 
-    def persona(self, params: Optional[Dict] = None) -> Persona:
-        return self.spinitron.personas(params=params, id=self.persona_id)
+    def persona(self, **kwargs) -> Persona:
+        return self.spinitron.personas(params=kwargs, id=self.persona_id)
 
-    def show(self, params: Optional[Dict] = None) -> Show:
-        return self.spinitron.shows(params=params, id=self.persona_id)
+    def show(self, **kwargs) -> Show:
+        return self.spinitron.shows(params=kwargs, id=self.persona_id)
 
 
 
