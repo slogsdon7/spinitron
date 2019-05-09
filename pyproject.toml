@@ -7,6 +7,7 @@ authors = ["slogsdon <me@slogsdon.dev>"]
 [tool.poetry.dependencies]
 python = "^3.7"
 requests = "^2.21"
+requests_cache = "^0.5.0"
 
 [tool.poetry.dev-dependencies]
 
