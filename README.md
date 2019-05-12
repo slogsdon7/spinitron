@@ -1,4 +1,4 @@
-Python wrapper for [Spinitron's](https://spinitron.com) API.
+WIP Python wrapper for [Spinitron's](https://spinitron.com) API.
 
 
 ## Quick-start
