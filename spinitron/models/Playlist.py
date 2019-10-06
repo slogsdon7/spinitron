@@ -38,7 +38,7 @@ class Playlist(Base):
         return self.spinitron.personas(params=kwargs, id=self.persona_id)
 
     def show(self, **kwargs) -> Show:
-        return self.spinitron.shows(params=kwargs, id=self.persona_id)
+        return self.spinitron.shows(params=kwargs, id=self.show_id)
 
 
 
